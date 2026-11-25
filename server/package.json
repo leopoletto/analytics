@@ -1,0 +1,27 @@
+{
+  "name": "@leo/server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "create-admin": "tsx src/cli/create-admin.ts",
+    "seed": "tsx src/db/seed.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.1",
+    "@leo/shared": "workspace:*",
+    "geoip-lite": "^1.4.10",
+    "hono": "^4.7.6",
+    "ua-parser-js": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/geoip-lite": "^1.4.4",
+    "@types/node": "^22.14.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

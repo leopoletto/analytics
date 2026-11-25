@@ -1,0 +1,18 @@
+{
+  "name": "leo-analytics",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @leo/tracker build && concurrently -n api,web -c blue,green \"pnpm --filter @leo/server dev\" \"pnpm --filter @leo/web dev\"",
+    "build": "pnpm --filter @leo/tracker build && pnpm --filter @leo/web build && pnpm --filter @leo/server build",
+    "start": "pnpm --filter @leo/server start",
+    "create-admin": "pnpm --filter @leo/server create-admin",
+    "seed": "pnpm --filter @leo/server seed",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.2"
+  }
+}
