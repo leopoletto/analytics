@@ -35,7 +35,7 @@ pnpm seed
 To wipe local data and start fresh:
 
 ```bash
-rm -rf database
+rm -rf data
 pnpm create-admin
 ```
 
@@ -45,16 +45,16 @@ pnpm create-admin
 
 ### 1. Shared Paths
 
-The SQLite database is stored at `database/database.sqlite`. Because SQLite runs in **WAL mode**, it also creates sibling `database.sqlite-wal` and `database.sqlite-shm` files next to it — so sharing the **`database` directory** ensures all three files persist safely across zero-downtime deployments.
+The SQLite database is stored at `data/analytics.sqlite`. Because SQLite runs in **WAL mode**, it also creates sibling `analytics.sqlite-wal` and `analytics.sqlite-shm` files next to it — so sharing the **`data` directory** ensures all three files persist safely across zero-downtime deployments.
 
 In Forge → **Site → Deployments → Shared Paths → Add shared path**:
 
-- **Create link from**: `database`
-- **To**: `database`
+- **Create link from**: `data`
+- **To**: `data`
 
-Forge will symlink `/home/forge/example.com/current/database` → `/home/forge/example.com/database` on every deployment (and `.env` is shared automatically by Forge).
+Forge will symlink `/home/forge/example.com/current/data` → `/home/forge/example.com/data` on every deployment (and `.env` is shared automatically by Forge).
 
-*(If you prefer sharing a single file instead, set `Create link from: database.sqlite` → `To: database/database.sqlite`.)*
+*(If you prefer sharing a single file instead, set `Create link from: analytics.sqlite` → `To: data/analytics.sqlite`.)*
 
 ### 2. Environment File (`.env`)
 
@@ -63,8 +63,8 @@ In Forge → **Site → Environment**, configure:
 ```env
 NODE_ENV=production
 PORT=3001
-# Optional custom path (defaults to database/database.sqlite):
-# DATABASE_PATH=/home/forge/analytics.yourdomain.com/current/database/database.sqlite
+# Optional custom path (defaults to data/analytics.sqlite):
+# DATABASE_PATH=/home/forge/analytics.yourdomain.com/current/data/analytics.sqlite
 ```
 
 ### 3. Deployment Script
@@ -143,7 +143,7 @@ pnpm create-admin
 
 *(You can also run it non-interactively: `pnpm create-admin --email you@domain.com --password your-strong-password`.)*
 
-Because `database/` is a shared path, your admin account, registered sites, and analytics database will persist across all future zero-downtime deployments.
+Because `data/` is a shared path, your admin account, registered sites, and analytics database will persist across all future zero-downtime deployments.
 
 ---
 
