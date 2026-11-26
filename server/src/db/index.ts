@@ -4,8 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const defaultDataDir = path.resolve(__dirname, '../../../data');
-const dbPath = process.env.DATABASE_PATH || path.join(defaultDataDir, 'analytics.db');
+const defaultDbDir = path.resolve(__dirname, '../../../database');
+const dbPath = process.env.DATABASE_PATH || path.join(defaultDbDir, 'database.sqlite');
 
 fs.mkdirSync(path.dirname(dbPath), { recursive: true });
 

@@ -1,10 +1,14 @@
 node_modules/
 dist/
 data/
+database/
 storage/
 *.db
 *.db-shm
 *.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
 .env
 .env.*
 !.env.example
